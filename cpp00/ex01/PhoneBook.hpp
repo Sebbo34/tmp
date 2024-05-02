@@ -6,7 +6,7 @@
 /*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:29:10 by seb               #+#    #+#             */
-/*   Updated: 2024/05/01 00:53:32 by seb              ###   ########.fr       */
+/*   Updated: 2024/05/01 22:21:58 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class PhoneBook
         ~PhoneBook(void);
         
         Contact rep[8];
-        
         void    get_firstname(void);
         
 };

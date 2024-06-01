@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 04:19:36 by seb               #+#    #+#             */
-/*   Updated: 2024/05/02 20:01:15 by seb              ###   ########.fr       */
+/*   Updated: 2024/06/01 18:13:27 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,42 @@
 
 int main(int argc, char **argv)
 {
-    size_t pos = 0;
-    std::string newfile;
-    std::string str;
+	size_t pos = 0;
+	std::string newfile;
+	std::string str;
+	int len;
+	int same;
 
-    if (argc != 4)
-    {
-        std::cout << "Invalid number of args" << std::endl; 
-        return (1);
-    }
-    std::cout << newfile << std::endl; 
-    std::ifstream fichier(argv[2]);
-    std::ofstream fichier2(newfile); // add name .replace
-    if (!fichier)
-        return (1);
-    while (getline(fichier, str))
-    {
-        pos = str.find(argv[2]); // boucler
-        if (pos != std::string::npos)
-        {
-            str.erase(pos, 2); // strlen?
-            str.insert(pos, argv[3]);   
-        }
-        fichier2 << str << std::endl;
-    }
-    return (0);
+	same = 0;
+	if (argc != 4)
+	{
+		std::cout << "Invalid number of args" << std::endl; 
+		return (1);
+	}
+	str = argv[2];
+	if (str.compare(argv[3]) == 0)
+		same = 1;
+	len = str.length();
+	std::ifstream fichier(argv[1]);
+	newfile = argv[1];
+	newfile.append(".replace");
+	std::ofstream fichier2(newfile); //peut fail?
+	if (!fichier)
+	{
+		std::cout << "No such file or directory" << std::endl;
+		return (1);
+	}
+	while (getline(fichier, str))
+	{
+		pos = str.find(argv[2]);
+		while ( pos != std::string::npos && same == 0)
+		{
+			str.erase(pos, len);
+			str.insert(pos, argv[3]);
+			pos = str.find(argv[2]);
+		}
+		fichier2 << str << std::endl;
+
+	}
+	return (0);
 }

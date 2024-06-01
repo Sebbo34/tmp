@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:29:10 by seb               #+#    #+#             */
-/*   Updated: 2024/05/01 22:21:58 by seb              ###   ########.fr       */
+/*   Updated: 2024/05/31 20:06:24 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 
 class PhoneBook
 {
-    public :
-        PhoneBook(void);
-        ~PhoneBook(void);
-        
-        Contact rep[8];
-        void    get_firstname(void);
-        
+	private:
+		Contact rep[8];
+	public :
+		PhoneBook(void);
+		~PhoneBook(void);
+		void ADD(int index);
+		void print(int index);
+		void Search(int index);
 };
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 22:46:18 by seb               #+#    #+#             */
-/*   Updated: 2024/05/09 18:59:15 by seb              ###   ########.fr       */
+/*   Updated: 2024/05/26 11:16:31 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int main( void )
 	std::cout << f << std::endl;
 	std::cout << a / b << std::endl; */
 	
-	Fixed a;
+	Fixed a(42);
 	Fixed b( Fixed( 5.05f ) * Fixed( 2 ) );
 	std::cout << ++a << std::endl;
 	std::cout << a-- << std::endl;

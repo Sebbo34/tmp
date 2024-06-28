@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 11:09:20 by seb               #+#    #+#             */
-/*   Updated: 2024/06/28 16:34:33 by seb              ###   ########.fr       */
+/*   Updated: 2024/06/28 17:55:52 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ template<typename T>
 class Array
 {
     private:
-    
+        int len;
     public:
         T *array;  
         Array<T>(void)
@@ -30,15 +30,27 @@ class Array
 
         ~Array<T>()
         {
-            delete this->array;
-             std::cout << "Destructor called" << std::endl;
+            delete[] this->array;
+            std::cout << "Destructor called" << std::endl;
         }
-        Array<T>(unsigned int len)
+        Array<T>(unsigned int size)
         {
-            this->array = new T[len]();
+            this->len = size;
+            this->array = new T[size + 1]();
             std::cout << "Constructor called" << std::endl;
+        }
+        int size(void)
+        {
+            return (this->len);
+        }
+        
+        T &operator[](int i)
+        {
+            if (i > this->len)
+                throw std::out_of_range("Out of range");
+            return (this->array[i]);
         }
 };
 
-
+//specify pour les char et les str laisser pour les int float si class
 #endif

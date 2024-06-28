@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 12:18:15 by sbo               #+#    #+#             */
-/*   Updated: 2024/06/25 15:20:55 by seb              ###   ########.fr       */
+/*   Created: 2024/06/27 16:40:50 by seb               #+#    #+#             */
+/*   Updated: 2024/06/27 16:52:04 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCOVERTER_HPP
-#define SCALARCOVERTER_HPP
+#ifndef WHATEVER_HPP
+#define WHATEVER_HPP
 
 #include <iostream>
 
-class ScalarConverter
+template <typename T>
+T min(T &x, T &y)
 {
-	private:
-		/* data */
-	public:
-		ScalarConverter(/* args */);
-		virtual ~ScalarConverter() = 0;
-		// ScalarConverter(const ScalarConverter &src);
-		// ScalarConverter &operator=(ScalarConverter const &conv);
-		static void			convert(std::string src);
-};
+    return (x<y ? x : y);
+}
+
+template <typename T>
+T max(T &x, T &y)
+{
+    return (x>y ? x : y);
+}
+
+template <typename T>
+void swap(T &x, T &y)
+{
+    T tmp;
+    tmp = x;
+    x = y;
+    y = tmp;
+}
+
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 12:18:20 by sbo               #+#    #+#             */
-/*   Updated: 2024/05/31 12:52:17 by sbo              ###   ########.fr       */
+/*   Updated: 2024/06/25 15:31:28 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,142 @@ ScalarConverter::~ScalarConverter()
 	std::cout << "Scalar Converter destructor called" << std::endl;
 }
 
-ScalarConverter::ScalarConverter(const ScalarConverter &src)
+// ScalarConverter::ScalarConverter(const ScalarConverter &src)
+// {
+// 	std::cout << "Scalar Converter copy constructor called" << std::endl;
+// 	return ;
+// }
+
+// ScalarConverter & ScalarConverter::operator=(ScalarConverter const &conv)
+// {
+// 	return;
+// }
+
+int   pui(float n, int exp)
 {
-	std::cout << "Scalar Converter copy constructor called" << std::endl;
-	return ;
+	float tmp;
+
+	if (exp == 0)
+		return (1); 
+	tmp = n;
+	while (exp > 1)
+	{
+		n = n * tmp;
+		exp--;
+	}
+	return (n);
+} 
+long	ft_atoi(const char *nptr, int *overflow)
+{
+	int		i;
+	long	nbr;
+
+	i = 0;
+	while (nptr[i] >= '0' && nptr[i] <= '9' )
+	{
+		nbr = nbr * 10 + nptr[i] - '0';
+		i++;
+	}
+	if (nbr > 2147483647)
+		*overflow = 1;
+	return (nbr);
 }
 
-ScalarConverter & ScalarConverter::operator=(ScalarConverter const &conv)
+double	ft_atoi_double(const char *nptr)
 {
-	return;
+	int		i;
+	double	nbr;
+	int		j;
+
+	i = 0;
+	while (nptr[i] >= '0' && nptr[i] <= '9' )
+	{
+		nbr = nbr * 10 + nptr[i] - '0';
+		i++;
+	}
+	i++;
+	j = 1;
+	while (nptr[i] >= '0' && nptr[i] <= '9' )
+	{
+		nbr = nbr + (double) (nptr[i] - '0') / pui(10, j);
+		j++;
+		i++;
+	}
+	return (nbr);
+}
+
+float	ft_atoi_float(const char *nptr)
+{
+	int		i;
+	float	nbr;
+	int		j;
+
+	i = 0;
+	while (nptr[i] >= '0' && nptr[i] <= '9' )
+	{
+		nbr = nbr * 10 + nptr[i] - '0';
+		i++;
+	}
+	i++;
+	j = 1;
+	while (nptr[i] >= '0' && nptr[i] <= '9' )
+	{
+		nbr = nbr + (float) (nptr[i] - '0') / pui(10, j);
+		j++;
+		i++;
+	}
+	return (nbr);
 }
 
 void	ScalarConverter::convert(std::string src)
 {
-	/*
-		check si c'est un scalaire one char
-		char	if (is printable -> print) else non printable ou impossible
-		int		if int max ou min non printable if check . ->arrondi inf 
-		float	print float max non printable
-		double	double max
-	*/
-	if (src[0] < '0' || src[0] > '9')
-		std::cout << "char : " << src[0] << std::endl;
+	int type;
+	int i;
+	int negatif;
+	double	value;
+
+	i = 0;
+	type = 0;
+	value = 0;
+	if ((src[0] < '0' || src[0] > '9') && src[0] != '-' && src[0] != '+')
+	{
+		if ( src.length() == 3 && src[0] == '\'' && src[2] == '\'')
+		{
+			type = 1;
+		}
+		else if (src.length() != 1)
+			std::cout << "msg erreur" << std::endl;
+		else 
+			type = 1;
+	}
+	else
+	{
+		if (src[0] == '-' || src[0] == '+')
+		{
+			if (src[0] == '-')
+				negatif = 1;
+			i++;
+		}
+		while (src[i] && (src[i] >= '0' && src[i] <= '9'))
+			i++;
+		if (!src[i])
+			type = 2;
+		else if (src[i] == '.')
+		{
+			i++;
+			while (src[i] && (src[i] >= '0' && src[i] <= '9'))
+				i++;
+			if (!src[i])
+				type = 4;
+			else if (src[i] == 'f' && !src[i + 1])
+				type = 3;
+			else
+				std::cout << "msg erreur" << std::endl;
+		}
+		else
+			std::cout << "msg erreur" << std::endl;
+	}
+	std::cout<< src << ' ' << type << std::endl;
+	std::cout << ft_atoi_double("42.434234") << std::endl;
+
 }

@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 12:18:15 by sbo               #+#    #+#             */
-/*   Updated: 2024/06/25 15:20:55 by seb              ###   ########.fr       */
+/*   Created: 2024/06/28 11:30:56 by seb               #+#    #+#             */
+/*   Updated: 2024/06/28 16:43:02 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCOVERTER_HPP
-#define SCALARCOVERTER_HPP
-
 #include <iostream>
+#include "Array.hpp"
 
-class ScalarConverter
+int main ()
 {
-	private:
-		/* data */
-	public:
-		ScalarConverter(/* args */);
-		virtual ~ScalarConverter() = 0;
-		// ScalarConverter(const ScalarConverter &src);
-		// ScalarConverter &operator=(ScalarConverter const &conv);
-		static void			convert(std::string src);
-};
-
-#endif
+     Array<int> test;
+     Array<char *> test1(4);
+     int i =0;
+     std::cout << *test1.array << std::endl;
+     while (i++ < 4)
+     {
+          //test1.array[i] = ;
+          std::cout << test1.array[i] << std::endl;
+     }
+}

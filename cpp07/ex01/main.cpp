@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 12:18:15 by sbo               #+#    #+#             */
-/*   Updated: 2024/06/25 15:20:55 by seb              ###   ########.fr       */
+/*   Created: 2024/06/27 23:10:06 by seb               #+#    #+#             */
+/*   Updated: 2024/06/28 11:03:56 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCOVERTER_HPP
-#define SCALARCOVERTER_HPP
+#include "iter.hpp"
 
-#include <iostream>
-
-class ScalarConverter
+void add_5(int i)
 {
-	private:
-		/* data */
-	public:
-		ScalarConverter(/* args */);
-		virtual ~ScalarConverter() = 0;
-		// ScalarConverter(const ScalarConverter &src);
-		// ScalarConverter &operator=(ScalarConverter const &conv);
-		static void			convert(std::string src);
-};
+    std::cout << i + 5 << std::endl;
+}
 
-#endif
+int main()
+{
+    int Array[5] = {1, 2, 3, 4, 5};
+
+    iter(Array, 5, add_5);
+}

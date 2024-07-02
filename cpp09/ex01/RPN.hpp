@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/28 19:57:30 by seb               #+#    #+#             */
-/*   Updated: 2024/06/28 22:28:26 by sbo              ###   ########.fr       */
+/*   Created: 2024/07/02 00:17:10 by sbo               #+#    #+#             */
+/*   Updated: 2024/07/02 00:18:44 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPAN_HPP
-#define SPAN_HPP
+#ifndef RPN_HPP
+#define RPN_HPP
 
 #include <iostream>
-#include <vector>
-#include <algorithm>
-#include <stdlib.h>
+#include <list>
 
-class Span
-{
-	private:
-		unsigned int    N;
-		std::vector<int>     container;
-	public:
-		Span();
-		Span(unsigned int N);
-		~Span();
-		void	addNumber(int number);
-		int		shortestSpan(void);
-		int		longestSpan(void);
-		void	range(int start, int end);
-};
 
-#endif
+
+#endif 

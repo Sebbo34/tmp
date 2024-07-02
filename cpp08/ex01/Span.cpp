@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 19:57:27 by seb               #+#    #+#             */
-/*   Updated: 2024/06/28 21:18:40 by seb              ###   ########.fr       */
+/*   Updated: 2024/06/28 22:27:33 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+
+Span::Span()
+{
+    std::cout << "Constructor called" << std::endl;
+}
 
 Span::Span(unsigned int N)
 {
@@ -25,23 +30,41 @@ Span::~Span()
 
 void    Span::addNumber(int number)
 {
-    if (this->container.size() > N)
+    if (this->container.size() > N - 1)
         throw std::out_of_range("Erreur");
     this->container.push_back(number);
+}
+
+void    Span::range(int start, int end)
+{
+    int diff;
+
+    diff = abs(end - start);
+    if (diff > N)
+        throw std::out_of_range("Erreur");
+
+    if (start < end)
+        diff = 1;
+    else 
+        diff = -1;
+    while(start != end)
+    {
+        this->container.push_back(start);
+        std::cout << start << std::endl;
+        start += diff;
+    }
 }
 
 int    Span::shortestSpan(void)
 {
     std::vector<int>::iterator current;
     std::vector<int>::iterator next;
-
     int shortest;
 
-    
     current = this->container.begin();
     next = current + 1;
-    shortest = *next - *current;
     sort(this->container.begin(), this->container.end());
+    shortest = *next - *current;
     while (next != this->container.end())
     {
         if (*next - *current < shortest)
@@ -55,5 +78,5 @@ int    Span::shortestSpan(void)
 int     Span::longestSpan(void)
 {
     sort(this->container.begin(), this->container.end());
-    return (*this->container.end() - *this->container.begin());
+    return (*(this->container.end() - 1) - *this->container.begin());
 }

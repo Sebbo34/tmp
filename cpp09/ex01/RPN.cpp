@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 00:17:08 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/02 03:22:49 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/02 17:02:24 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ std::list<std::string>	creat_list(std::string args)
 	std::list<std::string> lst;
 	int	begin;
 	int	end;
-
-	end = args.size();
 	
 	while (args.find_first_of(" ") != args.npos)
 	{

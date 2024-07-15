@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:31:39 by sbo               #+#    #+#             */
-/*   Updated: 2024/05/28 16:10:02 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/15 23:13:41 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ AForm::AForm(std::string name, const int gradeForSign, const int gradeForEx) : n
 {
 	if (gradeForSign > 150 || gradeForEx > 150)
 		this->GradeTooLowException();
-	else if (gradeForSign < 0 || gradeForEx < 0)
+	else if (gradeForSign < 1 || gradeForEx < 1)
 		this->GradeTooHighException();
 	std::cout << "AForm constructor called" << std::endl;
 	return ;
@@ -29,7 +29,7 @@ AForm::~AForm()
 }
 
 
-AForm::AForm (const AForm & src) : gradeForSign(src.getGradeForSign()), gradeForEx(src.getGradeForEx()), name(src.getName())
+AForm::AForm (const AForm & src) : name(src.getName()), gradeForSign(src.getGradeForSign()), gradeForEx(src.getGradeForEx())
 {
 	std::cout << "Copy constructor Called" << std::endl;
 	*this = src;
@@ -67,7 +67,11 @@ AForm & AForm::operator=(AForm const & AForm)
 
 std::ostream &operator<<(std::ostream &o, AForm const & AForm)
 {
-	o << AForm.getName() << " " << AForm.getGradeForEx() << " " << AForm.getGradeForSign() << " ";
+	o << "Form " << AForm.getName() << " need a " << AForm.getGradeForEx() << " for exec and " << AForm.getGradeForSign() << " for sign";
+	if (AForm.isSigned())
+		o << " and is already signed";
+	else
+		o << " and need to be signed";
 	return o;
 }
 
@@ -95,7 +99,7 @@ void	AForm::beSigned(Bureaucrat bureaucrat)
 		GradeTooLowException();
 }
 
-void	AForm::execute(Bureaucrat const & executor) //flag
+void	AForm::execute(Bureaucrat const & executor)
 {
-	std::cout << this->name << " EXECUTES " << std::endl;
+	std::cout << executor.getName() << " executed " << this->name <<std::endl;
 }

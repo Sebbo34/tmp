@@ -3,30 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 09:31:11 by sbo               #+#    #+#             */
-/*   Updated: 2024/05/29 09:23:25 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/15 23:10:55 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(int inst_grade) : grade(inst_grade), name("Bob")
+Bureaucrat::Bureaucrat(std::string inst_name, int inst_grade) : name(inst_name), grade(inst_grade) 
 {
 	if (inst_grade > 150)
 		this->GradeTooLowException();
-	else if (inst_grade < 0)
-		this->GradeTooHighException();
-	std::cout << "Bureaucrat constructor called" << std::endl;
-	return ;
-}
-
-Bureaucrat::Bureaucrat(std::string inst_name, int inst_grade) : grade(inst_grade), name(inst_name)
-{
-	if (inst_grade > 150)
-		this->GradeTooLowException();
-	else if (inst_grade < 0)
+	else if (inst_grade < 1)
 		this->GradeTooHighException();
 	std::cout << "Bureaucrat constructor called" << std::endl;
 	return ;
@@ -41,7 +31,7 @@ Bureaucrat::~Bureaucrat()
 
 Bureaucrat::Bureaucrat (Bureaucrat const & src) : name(src.getName())
 {
-	std::cout << "Copy constructor Called" << std::endl;
+	std::cout << "Bureaucrat copy constructor Called" << std::endl;
 	*this = src;
 	return ;
 }
@@ -65,37 +55,6 @@ Bureaucrat & Bureaucrat::operator=(Bureaucrat const & Bureaucrat)
 	return *this;
 }
 
-Bureaucrat 	Bureaucrat::operator++(int)
-{
-	if (this->grade < 1)
-		this->GradeTooHighException();
-	--this->grade;
-	return (*this);
-}
-
-Bureaucrat 	Bureaucrat::operator++()
-{
-	if (this->grade < 1)
-		this->GradeTooHighException();
-	this->grade--;
-	return (*this);
-}
-
-Bureaucrat 	Bureaucrat::operator--(int)
-{
-	if (this->grade > 149)
-		this->GradeTooLowException();
-	++this->grade;
-	return (*this);
-}
-
-Bureaucrat 	Bureaucrat::operator--()
-{
-	if (this->grade > 149)
-		this->GradeTooLowException();
-	this->grade++;
-	return (*this);
-}
 
 std::ostream &operator<<(std::ostream &o, Bureaucrat const & bureaucrat)
 {
@@ -113,24 +72,48 @@ void	Bureaucrat::GradeTooLowException(void)
 	throw Error("Grade Too Low");
 }
 
-void	Bureaucrat::signForm(Form *form)
+void 	Bureaucrat::promote()
 {
-	if (form->getGradeForSign() >= this->getGrade())
+	if (this->grade <= 1)
+		this->GradeTooHighException();
+	--this->grade;
+}
+
+void 	Bureaucrat::demote()
+{
+	if (this->grade > 149)
+		this->GradeTooLowException();
+	++this->grade;
+}
+
+void	Bureaucrat::signForm(Form &form)
+{
+	if (!form.isSigned())
 	{
-		if (!form->isSigned())
+		if (form.getGradeForSign() >= this->getGrade())
 		{
-			form->beSigned(*this);
-			std::cout << this->getName() << " signed " << form->getName() << std::endl;
+			form.beSigned(*this);
+			std::cout << this->getName() << " signed " << form.getName() << std::endl;
 		}
 		else
-			std::cout << this->getName() << "  couldn’t sign " << form->getName() << " because it is already signed" << std::endl;
+			std::cout << this->getName() << " couldn’t sign " << form.getName() << " because his grade is too low" << std::endl;
 	}
 	else
-		std::cout << this->getName() << "  couldn’t sign " << form->getName() << " because his grade is too low" << std::endl;
-
+		std::cout << this->getName() << " couldn’t sign " << form.getName() << " because it is already signed" << std::endl;
 }
-void	Bureaucrat::executeForm(Form & form)
+
+void	Bureaucrat::executeForm(Form &form)
 {
-	form.execute(*this);
-	std::cout << this->name << " EXECUTES " << form.getName() << std::endl;
+	if (form.isSigned())
+	{
+		if (form.getGradeForSign() >= this->getGrade())
+		{
+			form.execute(*this);
+			std::cout << this->name << " executed " << form.getName() << std::endl;
+		}
+		else
+			std::cout << this->getName() << " couldn’t executes " << form.getName() << " because his grade is too low" << std::endl;
+	}
+	else
+		std::cout << this->getName() << " couldn’t executes " << form.getName() << " because it is not signed" << std::endl;
 }

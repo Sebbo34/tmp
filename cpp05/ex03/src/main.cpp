@@ -6,32 +6,27 @@
 /*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 10:28:02 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 21:01:26 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/15 23:19:53 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "Intern.hpp"
+#include "ShruberryCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int main(void)
 {
 	try
 	{
-		Form formA("Form A", 1, 1);
-		Form formB("Form B", 1, 5);
-		Bureaucrat Victor("Victor", 1);
-		Bureaucrat Bob("Bob", 9);
-		std::cout << formA << std::endl;
-		std::cout << formB << std::endl;
-
-		Victor.signForm(formA);
-		Bob.signForm(formB);
-		std::cout << formA << std::endl;
-		std::cout << formB << std::endl;
-		formB.beSigned(Victor);
-		std::cout << formB << std::endl;
-		Form formC("Form C", 1, 1);
-		formC.beSigned(Bob);
+		Intern someRandomIntern;
+		Form *rrf;
+		Bureaucrat james("James", 1);
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		james.signForm(*rrf);
+		james.executeForm(*rrf);
 	}
 	catch(std::exception const& e)
 	{

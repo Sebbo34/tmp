@@ -29,7 +29,7 @@ Form::~Form()
 }
 
 
-Form::Form (const Form & src) : gradeForSign(src.getGradeForSign()), gradeForEx(src.getGradeForEx()), name(src.getName())
+Form::Form (const Form & src) :name(src.getName()), gradeForSign(src.getGradeForSign()), gradeForEx(src.getGradeForEx())
 {
 	std::cout << "Form copy constructor called" << std::endl;
 	*this = src;
@@ -67,7 +67,11 @@ Form & Form::operator=(Form const & Form)
 
 std::ostream &operator<<(std::ostream &o, Form const & Form)
 {
-	o << Form.getName() << " " << Form.getGradeForEx() << " " << Form.getGradeForSign() << " ";
+	o << "Form " << Form.getName() << " need a " << Form.getGradeForEx() << " for exec and " << Form.getGradeForSign() << " for sign";
+	if (Form.isSigned())
+		o << " and is already signed";
+	else
+		o << " and need to be signed";
 	return o;
 }
 
@@ -95,7 +99,7 @@ void	Form::beSigned(Bureaucrat bureaucrat)
 		GradeTooLowException();
 }
 
-void	Form::execute(Bureaucrat const & executor) //flag
+void	Form::execute(Bureaucrat const & executor)
 {
-	std::cout << this->name << " EXECUTES " << std::endl;
+	std::cout << executor.getName() << " executed " << name << std::endl;
 }

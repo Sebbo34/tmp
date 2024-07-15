@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 09:31:15 by sbo               #+#    #+#             */
-/*   Updated: 2024/05/29 09:23:25 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/15 23:19:02 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 #include <iostream>
 #include <exception>
+#include "error.hpp"
 
 class Form;
 
@@ -26,7 +27,6 @@ private:
 	const	std::string	name;
 	int					grade;
 public:
-	Bureaucrat(int inst_grade);
 	Bureaucrat(std::string inst_name, int inst_grade);
 	~Bureaucrat();
 	Bureaucrat(const Bureaucrat &src);
@@ -35,31 +35,13 @@ public:
 	std::string	getName() const;
 	int			getGrade() const;
 
-	Bureaucrat	operator++(int);
-	Bureaucrat	operator++();
-	Bureaucrat	operator--(int);
-	Bureaucrat	operator--();
+	void		promote();
+	void		demote();
 	void		GradeTooHighException(void); //exception a throw
 	void		GradeTooLowException(void);
-	void		signForm(Form *form);
+	void		signForm(Form &form);
 	void		executeForm(Form & form);
 	
-};
-
-class Error : public std::exception
-{
-	private :
-		std::string err;
-	public :
-		Error(std::string const& phrase="") throw()
-		 :err(phrase)
-	{}
-	 virtual const char* what() const throw()
-	 {
-		 return err.c_str();
-	 }
-	 virtual ~Error() throw()
-	{}
 };
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & bureaucrat);

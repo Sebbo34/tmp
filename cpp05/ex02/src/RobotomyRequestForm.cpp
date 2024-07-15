@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:33:00 by sbo               #+#    #+#             */
-/*   Updated: 2024/05/28 16:01:08 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/15 21:41:03 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,13 @@ std::string RobotomyRequestForm::getTarget(void) const
 	return (this->target);
 }
 
-void	RobotomyRequestForm::execute(Bureaucrat const & executor) //flag
+void	RobotomyRequestForm::execute(Bureaucrat const & executor)
 {
 	if (this->isSigned() && executor.getGrade() <= this->getGradeForEx())
 	{
 		std::cout << "** Make some drilling noises **" << std::endl;
 		srand((unsigned) time(NULL));
 		int tmp = rand() % 2;
-		std::cout << tmp << std::endl;
 		if (tmp)
 			std::cout << this->getTarget() << " has been robotomized" << std::endl;
 	}

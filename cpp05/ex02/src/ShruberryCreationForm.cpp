@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ShruberryCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:32:39 by sbo               #+#    #+#             */
-/*   Updated: 2024/05/28 16:01:16 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/15 23:06:49 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShruberryCreationForm.hpp"
+#include <fstream>
 
 ShruberryCreationForm::ShruberryCreationForm(std::string target) : AForm("Shruberry Creation", 145 , 137), target(target)
 {
@@ -23,6 +24,7 @@ ShruberryCreationForm::~ShruberryCreationForm()
 	std::cout << "ShruberryCreationForm destructor called " << std::endl;
 	return ;
 }
+
 ShruberryCreationForm::ShruberryCreationForm (const ShruberryCreationForm & src) : AForm("Shruberry Creation", 145 , 137)
 {
 	std::cout << "Copy constructor Called" << std::endl;
@@ -44,21 +46,30 @@ std::string ShruberryCreationForm::getTarget(void) const
 	return (this->target);
 }
 
-void	ShruberryCreationForm::execute(Bureaucrat const & executor) //flag
+void	ShruberryCreationForm::execute(Bureaucrat const & executor)
 {
+	std::string filename;
+	
 	if (this->isSigned() && executor.getGrade() <= this->getGradeForEx())
 	{
-		std::cout << "          ccee88oo" << std::endl;
-		std::cout << "   C8O8O8Q8PoOb o8oo" << std::endl;
-		std::cout << " dOB69QO8PdUOpugoO9bD" << std::endl;
-		std::cout << "CgggbU8OU qOp qOdoUOdcb" << std::endl;
-		std::cout << "    6OuU  /p u gcoUodpP" << std::endl;
-		std::cout << "      \\\\\\//  /douUP" << std::endl;
-		std::cout << "        \\\\\\////" << std::endl;
-		std::cout << "         |||/\\" << std::endl;
-		std::cout << "         |||\\/" << std::endl;
-		std::cout << "         |||||" << std::endl;
-		std::cout << "   .....//||||\\...." << std::endl;
+		filename = target + "_shruberry";
+		std::ofstream fichier(filename.c_str());
+		if (!fichier)
+		{
+			std::cout << "Error in " << filename << std::endl;
+			return ;
+		}
+		fichier << "          ccee88oo" << std::endl;
+		fichier << "   C8O8O8Q8PoOb o8oo" << std::endl;
+		fichier << " dOB69QO8PdUOpugoO9bD" << std::endl;
+		fichier << "CgggbU8OU qOp qOdoUOdcb" << std::endl;
+		fichier << "    6OuU  /p u gcoUodpP" << std::endl;
+		fichier << "      \\\\\\//  /douUP" << std::endl;
+		fichier << "        \\\\\\////" << std::endl;
+		fichier << "         |||/\\" << std::endl;
+		fichier << "         |||\\/" << std::endl;
+		fichier << "         |||||" << std::endl;
+		fichier << "   .....//||||\\...." << std::endl;
 	}
 	else if (!this->isSigned())
 		this->IsNotSignedException();

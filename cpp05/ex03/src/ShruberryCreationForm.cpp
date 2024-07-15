@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ShruberryCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:32:39 by sbo               #+#    #+#             */
-/*   Updated: 2024/05/29 09:23:25 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/15 23:08:20 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShruberryCreationForm.hpp"
+#include <fstream>
 
 ShruberryCreationForm::ShruberryCreationForm(std::string target) : Form("Shruberry Creation", 145 , 137), target(target)
 {
@@ -46,8 +47,16 @@ std::string ShruberryCreationForm::getTarget(void) const
 
 void	ShruberryCreationForm::execute(Bureaucrat const & executor) //flag
 {
+	std::string filename;
 	if (this->isSigned() && executor.getGrade() <= this->getGradeForEx())
 	{
+		filename = target + "_shruberry";
+		std::ofstream fichier(filename.c_str());
+		if (!fichier)
+		{
+			std::cout << "Error in " << filename << std::endl;
+			return ;
+		}
 		std::cout << "          ccee88oo" << std::endl;
 		std::cout << "   C8O8O8Q8PoOb o8oo" << std::endl;
 		std::cout << " dOB69QO8PdUOpugoO9bD" << std::endl;

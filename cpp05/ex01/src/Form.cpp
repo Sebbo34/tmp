@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:31:39 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 14:51:14 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/15 21:01:53 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,11 @@ Form & Form::operator=(Form const & Form)
 
 std::ostream &operator<<(std::ostream &o, Form const & Form)
 {
-	o << Form.getName() << " " << Form.getGradeForEx() << " " << Form.getGradeForSign() << " ";
+	o << "Form " << Form.getName() << " need a " << Form.getGradeForEx() << " for exec and " << Form.getGradeForSign() << " for sign";
+	if (Form.isSigned())
+		o << " and is already signed";
+	else
+		o << " and need to be signed";
 	return o;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 09:31:15 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 12:34:29 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/15 21:13:12 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ public:
 	int			getGrade() const;
 	void		promote();
 	void		demote();
-	void		GradeTooHighException(void); //exception a throw
+	void		GradeTooHighException(void);
 	void		GradeTooLowException(void);
-	void		signForm(Form *form);
+	void		signForm(Form &form);
 	
 };
 

@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:50:57 by sbo               #+#    #+#             */
-/*   Updated: 2024/05/29 11:18:11 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/15 23:23:44 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
 
-Intern::Intern(/* args */)
+Intern::Intern()
 {
 	std::cout << "Intern constructor Called" << std::endl;
-
 }
 
 Intern::~Intern()
@@ -33,13 +32,40 @@ Intern::Intern (const Intern & src)
 
 Intern & Intern::operator=(Intern const & intern)
 {
+	if (this != &intern)
+	{
+	}
 	return *this;
+}
+
+Form *newRR(std::string target)
+{
+	return new RobotomyRequestForm(target);
+}
+
+Form *newPP(std::string target)
+{
+	return new PresidentialPardonForm(target);
+}
+
+Form *newSC(std::string target)
+{
+	return new ShruberryCreationForm(target);
 }
 
 Form	*Intern::makeForm(std::string form, std::string target)
 {
-	Form *tmp;
+	std::string _form[3] = {"robotomy request", "presidential pardon", "shruberry creation"};
+	Form*	(*ptr[3])(std::string) = { &newRR, &newPP , &newSC};
 
-	std::cout << "Interns creates " << form << std::endl;
-	return (tmp);
+	for (int i = 0; i < 3 ; i++)
+	{
+		if (form.compare(_form[i]) == 0)
+		{
+			std::cout << "Interns creates " << form << std::endl;
+			return ptr[i](target);
+		}
+	}
+	std::cout << "Interns can't creates " << form << std::endl;
+	return (nullptr);
 }

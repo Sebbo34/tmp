@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/26 10:28:02 by sbo               #+#    #+#             */
-/*   Updated: 2024/05/29 11:40:42 by sbo              ###   ########.fr       */
+/*   Created: 2024/05/29 08:44:22 by sbo               #+#    #+#             */
+/*   Updated: 2024/07/15 22:39:07 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#ifndef INTERN_HPP
+#define INTERN_HPP
+
 #include "Form.hpp"
-#include "ShruberryCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "ShruberryCreationForm.hpp"
 
-//explicit error for execute Form
-//arbre dans un file
-
-int main(void)
+class Intern
 {
-	try
-	{
-		Bureaucrat B("James", -5);
-		ShruberryCreationForm A("De");
-		A.beSigned(B);
-		B.executeForm(A);
-	}
-	catch(std::exception const& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-}
+	public:
+		Intern(/* args */);
+		~Intern();
+		Intern(const Intern &src);
+		Intern &operator=(Intern const &intern);
+		Form	*makeForm(std::string form, std::string target);
+};
+
+#endif

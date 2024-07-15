@@ -1,7 +1,8 @@
-NAME		:= phonebook
+NAME		:= frag
 
-SRCS		:= PhoneBook.cpp \
-				Contact.cpp \
+SRCS		:= ClapTrap.cpp \
+				FragTrap.cpp \
+				ScavTrap.cpp \
 				main.cpp
 OBJS		:= $(SRCS:.cpp=.o)
 

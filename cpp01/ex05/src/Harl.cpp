@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 20:02:26 by seb               #+#    #+#             */
-/*   Updated: 2024/06/01 19:10:20 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/03 16:22:43 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,22 @@ Harl::~Harl(void)
 
 void	Harl::debug(void)
 {
-	std::cout << "debug" << std::endl;
+	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do !" << std::endl;
 	return ;
 }
 
 void	Harl::info(void)
 {
-	std::cout << "info" << std::endl;
+	std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger ! If you did, I wouldn’t be asking for more !" << std::endl;
 	return ;
 }
 void	Harl::warning(void)
 {
-	std::cout << "warning" << std::endl;
+	std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month" << std::endl;
 }
 void	Harl::error(void)
 {
-	std::cout << "error" << std::endl;
+	std::cout << "This is unacceptable ! I want to speak to the manager now." << std::endl;
 }
 
 void	Harl::complain(std::string level)

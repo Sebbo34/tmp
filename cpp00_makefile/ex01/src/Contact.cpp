@@ -6,109 +6,138 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 18:20:19 by sbo               #+#    #+#             */
-/*   Updated: 2024/06/01 15:19:49 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/03 12:45:32 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
+int isprintable(std::string line)
+{
+	int i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (!isprint(line[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	Contact::setFirstName(void)
 {
-	std::string test;
+	std::string line;
 	while (1)
 	{
 		std::cout << "First name : ";
-		getline(std::cin, test);
+		getline(std::cin, line);
 		if (std::cin.eof())
 		{
 			std::cin.clear();
 			clearerr(stdin);
 			std::cout << std::endl;
 		}
-		else if (!test.empty())
+		else if (!line.empty())
 		{	
-			this->firstName = test;
-			break;
+			if (isprintable(line) == 1)
+			{
+				this->firstName = line;
+				break;
+			}
 		}	
 	}
 }
 void	Contact::setNickName(void)
 {
-		std::string test;
+	std::string line;
 	while (1)
 	{
 		std::cout << "Nick name : ";
-		getline(std::cin, test);
+		getline(std::cin, line);
 		if (std::cin.eof())
 		{
 			std::cin.clear();
 			clearerr(stdin);
 			std::cout << std::endl;
 		}
-		else if (!test.empty())
+		else if (!line.empty())
 		{	
-			this->nickName = test;
-			break;
+			if (isprintable(line) == 1)
+			{
+				this->nickName = line;
+				break;
+			}
 		}	
 	}
 }
 void	Contact::setLastName(void)
 {
-		std::string test;
+		std::string line;
 	while (1)
 	{
 		std::cout << "Last name : ";
-		getline(std::cin, test);
+		getline(std::cin, line);
 		if (std::cin.eof())
 		{
 			std::cin.clear();
 			clearerr(stdin);
 			std::cout << std::endl;
 		}
-		else if (!test.empty())
+		else if (!line.empty())
 		{	
-			this->lastName = test;
-			break;
+			if (isprintable(line) == 1)
+			{
+				this->lastName = line;
+				break;
+			}
 		}	
 	}
 }
 void	Contact::setPhoneNumber(void)
 {
-		std::string test;
+		std::string line;
 	while (1)
 	{
 		std::cout << "Phone Number: ";
-		getline(std::cin, test);
+		getline(std::cin, line);
 		if (std::cin.eof())
 		{
 			std::cin.clear();
 			clearerr(stdin);
 			std::cout << std::endl;
 		}
-		else if (!test.empty())
+		else if (!line.empty())
 		{	
-			this->phoneNumber = test;
-			break;
+			if (isprintable(line) == 1)
+			{
+				this->phoneNumber = line;
+				break;
+			}
 		}	
 	}
 }
 void	Contact::setDarkestSecret(void)
 {
-		std::string test;
+		std::string line;
 	while (1)
 	{
 		std::cout << "Darkest Secret : ";
-		getline(std::cin, test);
+		getline(std::cin, line);
 		if (std::cin.eof())
 		{
 			std::cin.clear();
 			clearerr(stdin);
 			std::cout << std::endl;
 		}
-		else if (!test.empty())
+		else if (!line.empty())
 		{	
-			this->darkestSecret = test;
-			break;
+			if (isprintable(line) == 1)
+			{
+				this->darkestSecret = line;
+				break;
+			}
 		}	
 	}
 }

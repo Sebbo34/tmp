@@ -1,7 +1,7 @@
-NAME		:= phonebook
+NAME		:= Scav
 
-SRCS		:= PhoneBook.cpp \
-				Contact.cpp \
+SRCS		:= ClapTrap.cpp \
+				ScavTrap.cpp \
 				main.cpp
 OBJS		:= $(SRCS:.cpp=.o)
 

@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 20:38:55 by seb               #+#    #+#             */
-/*   Updated: 2024/06/01 17:04:11 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/03 14:47:11 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@ int main(void)
 {
 	randomChump("Billy");
 	Zombie *zombie = newZombie("Bob");
+	zombie->announce();
 	delete (zombie);
 }

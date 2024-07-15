@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 20:46:37 by seb               #+#    #+#             */
-/*   Updated: 2024/06/01 17:00:15 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/03 14:45:47 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,5 @@ Zombie* newZombie( std::string name )
 	Zombie *newzomb = new Zombie;
 	
 	newzomb->setName(name);
-	newzomb->announce();
 	return (newzomb);
 }

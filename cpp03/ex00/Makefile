@@ -1,7 +1,6 @@
-NAME		:= phonebook
+NAME		:= clap
 
-SRCS		:= PhoneBook.cpp \
-				Contact.cpp \
+SRCS		:= ClapTrap.cpp \
 				main.cpp
 OBJS		:= $(SRCS:.cpp=.o)
 

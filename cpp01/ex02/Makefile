@@ -1,4 +1,4 @@
-NAME		:= phonebook
+NAME		:= brain
 
 SRCS		:=	main.cpp
 OBJS		:= $(SRCS:.cpp=.o)

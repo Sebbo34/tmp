@@ -1,7 +1,6 @@
-NAME		:= phonebook
+NAME		:= fixed
 
-SRCS		:= PhoneBook.cpp \
-				Contact.cpp \
+SRCS		:= 	Fixed.cpp \
 				main.cpp
 OBJS		:= $(SRCS:.cpp=.o)
 

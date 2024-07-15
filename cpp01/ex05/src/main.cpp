@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 20:02:30 by seb               #+#    #+#             */
-/*   Updated: 2024/06/01 18:19:53 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/03 16:23:51 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,9 @@
 int main(void)
 {
 	Harl    Harl;
-	Harl.complain("DEBU");
 	Harl.complain("DEBUG");
-	Harl.complain("DEBU");
-	Harl.complain("DEBU");
 	Harl.complain("ERROR");
 	Harl.complain("INFO");
 	Harl.complain("WARNING");
-	Harl.complain("DEBU");
 	Harl.complain("DEBU");
 }

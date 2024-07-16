@@ -6,14 +6,15 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 15:00:00 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 08:55:54 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/16 18:50:58 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : type("Dog")
+Dog::Dog() : Animal()
 {
+	type = "Dog";
 	this->Brain = new class Brain;
 	std::cout << "Dog constructor called" << std::endl;
 	return ;
@@ -24,10 +25,6 @@ Dog::~Dog(void)
 	delete this->Brain;
 	std::cout << "Dog destructor called" << std::endl;
 	return ;
-}
-std::string	Dog::getType(void) const
-{
-	return (this->type);
 }
 
 void	Dog::makeSound() const

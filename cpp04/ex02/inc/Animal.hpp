@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 12:05:28 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 10:05:05 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/16 18:56:56 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ public:
 	Animal	&operator=(Animal const & animal);
 	
 	virtual void	makeSound() const = 0;
-	virtual std::string	getType(void) const;
+	std::string	getType(void) const;
 
 };
 

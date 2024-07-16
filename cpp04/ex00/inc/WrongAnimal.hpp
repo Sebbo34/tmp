@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 10:56:10 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 09:19:35 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/16 18:26:13 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class WrongAnimal
 	
 		void	makeSound();
 		std::string	getType(void) const;
-
 };
 
 #endif

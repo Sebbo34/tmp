@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 11:00:07 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 09:33:13 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/16 18:57:18 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,11 @@
 
 class WrongCat : public WrongAnimal
 {
-	protected:
-		std::string type;
 	public:
 		WrongCat();
 		~WrongCat();
 		WrongCat(const WrongCat &src);
 		WrongCat	&operator=(WrongCat const & wronganimal);
-		std::string	getType(void) const;
 		void	makeSound() const;
 };
 

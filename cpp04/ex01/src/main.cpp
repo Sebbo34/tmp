@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 12:05:09 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 09:37:11 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/16 18:55:49 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int main(void)
 {
-/* 	Animal *tab[4];
+	Animal *tab[4];
 	int ind = 0;
 
 	while (ind < 2)
@@ -42,6 +42,8 @@ int main(void)
 
 	Cat cat;
 	Cat newcat(cat);
+	Cat test = cat;
+	cat = newcat;
 	
 	Dog dog;
 	dog.setIdea("0", 0);
@@ -51,10 +53,6 @@ int main(void)
 	nDog.printIdeas();
 	nDog.setIdea("1", 0);
 	nDog.printIdeas();
-	dog.printIdeas(); */
+	dog.printIdeas();
 
-	Dog basic;
-{
-Dog tmp = basic;
-}
 }

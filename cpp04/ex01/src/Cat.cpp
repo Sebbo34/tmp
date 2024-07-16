@@ -6,14 +6,15 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:59:52 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 08:55:29 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/16 18:52:24 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat() : type("Cat")
+Cat::Cat() : Animal()
 {
+	type = "Cat";
 	this->Brain = new class Brain;
 	std::cout << "Cat constructor called" << std::endl;
 	return ;

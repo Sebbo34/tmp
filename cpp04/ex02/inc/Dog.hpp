@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 15:00:04 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 09:51:24 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/16 18:56:50 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ class Dog : public Animal
 {
 	private:
 		Brain *Brain;
-	protected:
-		std::string type;
 	public:
 		Dog();
 		~Dog();
@@ -29,7 +27,6 @@ class Dog : public Animal
 		Dog	&operator=(Dog const & Dog);
 	
 		void	makeSound() const;
-		std::string	getType(void) const;
 		void	setIdea(std::string idea, int i);
 		void	printIdeas();
 };

@@ -6,12 +6,19 @@
 /*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:45:50 by seb               #+#    #+#             */
-/*   Updated: 2024/06/27 13:46:35 by seb              ###   ########.fr       */
+/*   Updated: 2024/06/27 14:51:07 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BASE_HPP
 #define BASE_HPP
 
+#include <iostream>
+
+class Base
+{
+    public:
+       virtual ~Base() = 0;
+};
 
 #endif

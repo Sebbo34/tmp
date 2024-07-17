@@ -6,7 +6,7 @@
 /*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 12:18:20 by sbo               #+#    #+#             */
-/*   Updated: 2024/06/25 15:31:28 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/16 10:33:38 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ void	ScalarConverter::convert(std::string src)
 		else
 			std::cout << "msg erreur" << std::endl;
 	}
-	std::cout<< src << ' ' << type << std::endl;
-	std::cout << ft_atoi_double("42.434234") << std::endl;
+
+	
 
 }

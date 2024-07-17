@@ -6,12 +6,18 @@
 /*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:45:55 by seb               #+#    #+#             */
-/*   Updated: 2024/06/27 13:46:50 by seb              ###   ########.fr       */
+/*   Updated: 2024/06/27 14:41:13 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BASEB_HPP
 #define BASEB_HPP
+
+#include "Base.hpp"
+
+class BaseB : public Base
+{
+};
 
 
 #endif

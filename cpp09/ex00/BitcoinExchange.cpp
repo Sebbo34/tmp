@@ -6,7 +6,7 @@
 /*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 21:40:13 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/02 19:32:45 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/18 03:03:06 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@ std::map<std::string, float> creat_map(std::string file)
 		file.erase(0, end + 1);
 
 	}
-    // for (std::map<std::string, float>::iterator it = map.begin(); it != map.end(); ++it) 
-    // {
-    //     std::cout << "Key: " << it->first << ", Value: " << it->second << std::endl;
-    // }
     return (map);
 }
 
@@ -45,53 +41,55 @@ int max_days(std::string month)
         return (30);
 }
 
-std::string ft_to_str(int value, int n)
-{
-    std::string str;
-    str = std::to_string(value);
-    while (str.size() != n)
-        str = "0" + str;
-    return (str);
-}
-
-std::string nextday(std::string day)
+bool parseday(std::string day)
 {
     int last;
     int first;
     int tmp;
-    std::string nextday;
     first = day.find_first_of("-");
     last = day.find_last_of("-");
-    tmp = atof(day.substr(last + 1, day.size() - (last + 1) ).c_str());
-    if (tmp == max_days(day.substr(first + 1, 2)))
+    tmp = atoi(day.substr(first + 1, 2).c_str()); // mois
+    if (tmp > 12 || tmp < 1)
+        return (false);
+    tmp = atoi(day.substr(last + 1, day.size() - (last + 1) ).c_str()); //jour
+    if (tmp > max_days(day.substr(first + 1, 2)))
     {
-        tmp = atof(day.substr(first + 1, 2).c_str());
-        if (tmp != 12)
-        {
-            nextday = day.substr(0, first + 1) + ft_to_str(tmp + 1, 2) + "-01";
-        }
-        else
-        {
-            tmp = atof(day.substr(0, first).c_str());
-            nextday = ft_to_str(tmp + 1, 4) + "-01-01";
-        }
+        if (tmp == 29 && day.substr(first + 1, 2) == "02" &&  atoi(day.substr(0, first).c_str()) % 4 == 0)
+            return true;
+        return false;
     }
-    else 
-        nextday =  day.substr(0, last + 1) + ft_to_str(tmp + 1, 2);
-    return (nextday);
+    return true;
 }
 
-int diff_time(std::string start, std::string end)
-{
-    int nbr_day;
 
-    nbr_day = 0;
-    while (start != end)
+bool parseinput(std::string line)
+{
+    int i;
+    
+    i = 0;
+    while (isdigit(line[i]) && i < 4) 
+        i++;
+    if(i != 4  || line[i] != '-')
+        return false;
+    i++;
+    if (!isdigit(line[i++]) || !isdigit(line[i++]) || line[i++] != '-' || !isdigit(line[i++]) || !isdigit(line[i++]))
+        return (false);
+    if(line[i++] != ' ' || line[i++] != '|' || line[i++] != ' ')
+        return false;
+    if (isdigit(line[i]) || line[i] == '-')
     {
-        start = nextday(start);
-        nbr_day++;
+        if (line[i] == '-')
+            i++;
+        while (isdigit(line[i]))
+            i++;
+        if (line[i] && line[i] != '.')
+            return false;
+        if (!line[i])
+            return true;
+        while (isdigit(line[i]))
+            i++;    
     }
-    return (nbr_day);
+    return true;
 }
 
 std::string find_closest(std::string date ,std::map<std::string, float> map)
@@ -130,18 +128,35 @@ void    btc(std::string line ,std::map<std::string, float> map)
     std::string old;
     date = line.substr(0, line.find_first_of(" "));
     try {
+        if (!parseday(date))
+        {
+            std::cout << "Error in date format" << std::endl;
+            return ;
+        }  
         float value = map.at(date);
+        float nbr = atof(line.substr(line.find_last_of(" ")  + 1 , line.size()).c_str());
+        if (nbr < 0 || nbr > 1000)
+        {
+            std::cout << "Error" << std::endl;
+            return ;
+        }
         std::cout << date << " => " << line.substr(line.find_last_of(" ") + 1, line.size());
         std::cout << "=" ;
-        std::cout << atof(line.substr(line.find_last_of(" ")  + 1 , line.size()).c_str()) * map[date] << std::endl;
+        std::cout << nbr * value << std::endl;
     } 
     catch (const std::out_of_range& e) {
+        float nbr = atof(line.substr(line.find_last_of(" ")  + 1 , line.size()).c_str());
         old = date;
         date = find_closest(date ,map);
         float value = map.at(date);
+        if (nbr < 0 || nbr > 1000)
+        {
+            std::cout << "Error" << std::endl;
+            return ;
+        }
         std::cout << old << " => " << line.substr(line.find_last_of(" ") + 1, line.size());
         std::cout << "=" ;
-        std::cout << atof(line.substr(line.find_last_of(" ")  + 1 , line.size()).c_str()) * map[date] << std::endl;
+        std::cout << nbr * map[date] << std::endl;
     }
 }
 
@@ -164,7 +179,10 @@ int main()
 
     std::ifstream input("input.txt");
     while (std::getline(input, line)) {
-        btc(line, map);
+        if (parseinput(line))
+            btc(line, map);
+        else
+            std::cout << "Bad input =>" << line << std::endl;
     }    
     
 }

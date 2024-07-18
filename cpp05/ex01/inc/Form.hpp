@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:31:45 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 14:51:28 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/17 21:32:31 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class Form
 		~Form();
 		Form(const Form &src);
 		Form &operator=(Form const &form);
+		
 		std::string	getName() const;
 		int getGradeForSign(void) const;
 		int getGradeForEx(void) const;

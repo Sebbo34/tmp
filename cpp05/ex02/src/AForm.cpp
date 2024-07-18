@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:31:39 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 23:13:41 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/18 12:37:53 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,4 @@ void	AForm::beSigned(Bureaucrat bureaucrat)
 		this->sign = true;
 	else
 		GradeTooLowException();
-}
-
-void	AForm::execute(Bureaucrat const & executor)
-{
-	std::cout << executor.getName() << " executed " << this->name <<std::endl;
 }

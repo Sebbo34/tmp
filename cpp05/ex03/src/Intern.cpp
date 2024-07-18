@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 08:50:57 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 23:23:44 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/17 21:34:29 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ Form	*Intern::makeForm(std::string form, std::string target)
 		}
 	}
 	std::cout << "Interns can't creates " << form << std::endl;
-	return (nullptr);
+	return (NULL);
 }

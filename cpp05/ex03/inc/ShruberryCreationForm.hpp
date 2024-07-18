@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:33:08 by sbo               #+#    #+#             */
-/*   Updated: 2024/05/29 09:23:25 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/17 21:32:18 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ class ShruberryCreationForm : public Form
 	public:
 		ShruberryCreationForm(std::string target);
 		~ShruberryCreationForm();
-
-		std::string getTarget(void) const;
 		ShruberryCreationForm & operator=(ShruberryCreationForm const & form);
 		ShruberryCreationForm (const ShruberryCreationForm & src);
+
+		std::string getTarget(void) const;
 		void	execute(Bureaucrat const & executor);
 
 };

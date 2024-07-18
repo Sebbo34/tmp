@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 10:28:02 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 23:19:53 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/18 12:37:04 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int main(void)
 		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 		james.signForm(*rrf);
 		james.executeForm(*rrf);
+		delete rrf;
+	}
+	catch(std::bad_alloc const& e)
+	{
+		std::cerr << "Bad alloc " << std::endl;
 	}
 	catch(std::exception const& e)
 	{

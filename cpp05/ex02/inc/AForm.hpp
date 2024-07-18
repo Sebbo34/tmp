@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:31:45 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 21:19:39 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/18 12:37:31 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class AForm
 		const int			gradeForEx;
 	public:
 		AForm(std::string name, int gradeForSign, int gradeForEx);
-		virtual ~AForm() = 0;
+		virtual ~AForm();
 		AForm(const AForm &src);
 		AForm &operator=(AForm const &Aform);
 		std::string	getName() const;
@@ -38,7 +38,7 @@ class AForm
 		void	GradeTooLowException(void);
 		void	IsNotSignedException(void);
 		void	beSigned(Bureaucrat bureaucrat);
-		virtual void	execute(Bureaucrat const & executor);
+		virtual void	execute(Bureaucrat const & executor) = 0;
 };
 
 std::ostream & operator<<(std::ostream & o, AForm const & Form);

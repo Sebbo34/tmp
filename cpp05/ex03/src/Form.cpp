@@ -15,9 +15,9 @@
 Form::Form(std::string name, const int gradeForSign, const int gradeForEx) : name(name), sign(0), gradeForSign(gradeForSign), gradeForEx(gradeForEx)
 {
 	if (gradeForSign > 150 || gradeForEx > 150)
-		this->GradeTooLowException();
+		throw Form::GradeTooLowException();
 	else if (gradeForSign < 0 || gradeForEx < 0)
-		this->GradeTooHighException();
+		throw Form::GradeTooHighException();
 	std::cout << "Form constructor called" << std::endl;
 	return ;
 }
@@ -75,28 +75,32 @@ std::ostream &operator<<(std::ostream &o, Form const & Form)
 	return o;
 }
 
-void	Form::GradeTooHighException(void)
+typedef Form::GradeTooLowException Low;
+typedef Form::GradeTooHighException High;
+typedef Form::IsNotSigned INS;
+
+
+const char* High::what() const throw()
 {
-	throw Error("Grade Too High");
+	return "Grade too high";
 }
 
-void	Form::GradeTooLowException(void)
+const char* Low::what() const throw()
 {
-	throw Error("Grade Too Low");
+	return "Grade too low";
 }
 
-void	Form::IsNotSignedException(void)
+const char* INS::what() const throw()
 {
-	throw Error("The Form is not signed");
+	return "Form is not signed";
 }
-
 
 void	Form::beSigned(Bureaucrat bureaucrat)
 {
 	if (bureaucrat.getGrade() <= this->getGradeForSign())
 		this->sign = true;
 	else
-		GradeTooLowException();
+		throw Form::GradeTooLowException();
 }
 
 void	Form::execute(Bureaucrat const & executor)

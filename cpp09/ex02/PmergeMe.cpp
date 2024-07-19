@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 03:34:35 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/02 05:15:41 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/18 11:29:37 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,64 +59,15 @@ std::stack<unsigned int> sort_stack(std::stack<unsigned int> stack, int i)
 	}
 	s1 = sort_stack(s1, i + 1);
 	s2 = sort_stack(s2, i + 1);
-	if (i % 2 == 1)
-	{
-		while (!s1.empty() || !s2.empty())
-		{
-			if (s1.empty())
-			{
-				stack.push(s2.top());
-				s2.pop();
-			}
-			else if (s2.empty())
-			{
-				stack.push(s1.top());
-				s1.pop();
-			}
-			else 
-			{
-				if ( s1.top() > s2.top())
-				{
-					stack.push(s2.top());
-					s2.pop();
-				}
-				else 
-				{
-					stack.push(s1.top());
-					s1.pop();
-				}
-			}
-		}
-	}
-	else 
-	{
-		while (!s1.empty() || !s2.empty())
-		{
-			if (s1.empty())
-			{
-				stack.push(s2.top());
-				s2.pop();
-			}
-			else if (s2.empty())
-			{
-				stack.push(s1.top());
-				s1.pop();
-			}
-			else 
-			{
-				if ( s1.top() < s2.top())
-				{
-					stack.push(s2.top());
-					s2.pop();
-				}
-				else 
-				{
-					stack.push(s1.top());
-					s1.pop();
-				}
-			}
-		}
-	}
+
+	int shift;
+	int prev_ind;
+	
+	//elem a push entre shift et prev_ind -> binary search
+	// insert dans la stack 2
+	// premier elem forcement en 0
+	// elem suivant entre prev ind et ind + shift(=nbr elem push)
+	
 	return (stack);
 }	
 
@@ -175,3 +126,13 @@ int main() {
 
     return 0;
 }
+
+//1 1 1 1		 1 1 1
+//11	11 enregistrer la premiere comparaison par pair pour placer l'element les pairs sont au meme indice il faut juste un shift qui correspond au nombre d'element push 
+// 1 1 1 1 1 1 1 1 1 1 1 1 1
+// 1 1 1 1 1 1 2 2 2 2 2 2 2
+
+
+//1a 2 2 2 l'index de la premiere comparaison permet d'optimiser le binary search 
+// 1 1 1 2 2 2 3 3 3 4 4 4 4
+// 1 1 2 3 3 4 5 5 6 7 7 8 8

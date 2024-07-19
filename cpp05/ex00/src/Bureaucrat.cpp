@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 09:31:11 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 12:30:55 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/19 14:38:09 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 Bureaucrat::Bureaucrat(std::string inst_name, int inst_grade) : name(inst_name),  grade(inst_grade)
 {
 	if (inst_grade > 150)
-		this->GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();	
 	else if (inst_grade < 1)
-		this->GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();	
 	std::cout << "Bureaucrat constructor called" << std::endl;
 	return ;
 }
@@ -59,14 +59,14 @@ Bureaucrat & Bureaucrat::operator=(Bureaucrat const & Bureaucrat)
 void 	Bureaucrat::promote()
 {
 	if (this->grade <= 1)
-		this->GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	--this->grade;
 }
 
 void 	Bureaucrat::demote()
 {
 	if (this->grade > 149)
-		this->GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	++this->grade;
 }
 
@@ -76,12 +76,15 @@ std::ostream &operator<<(std::ostream &o, Bureaucrat const & bureaucrat)
 	return o;
 }
 
-void	Bureaucrat::GradeTooHighException(void)
+typedef Bureaucrat::GradeTooLowException Low;
+typedef Bureaucrat::GradeTooHighException High;
+
+const char* High::what() const throw()
 {
-	throw Error("Grade Too High");
+	return "Grade too high";
 }
 
-void	Bureaucrat::GradeTooLowException(void)
+const char* Low::what() const throw()
 {
-	throw Error("Grade Too Low");
+	return "Grade too low";
 }

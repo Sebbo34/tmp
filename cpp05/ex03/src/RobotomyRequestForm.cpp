@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:33:00 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 23:20:17 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/19 14:50:37 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) //flag
 			std::cout << this->getTarget() << " has been robotomized" << std::endl;
 	}
 	else if (!this->isSigned())
-		this->IsNotSignedException();
+		throw Form::IsNotSigned();
 	else
-		this->GradeTooLowException();
+		throw Form::GradeTooLowException();
 }

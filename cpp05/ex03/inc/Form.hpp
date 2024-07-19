@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Form_H
-#define Form_H
+#ifndef Form_HPP
+#define Form_HPP
 
 #include "Bureaucrat.hpp"
 #include <iostream>
@@ -34,10 +34,21 @@ class Form
 		int		getGradeForSign(void) const;
 		int		getGradeForEx(void) const;
 		bool	isSigned(void) const;
-		void	GradeTooHighException(void);
-		void	GradeTooLowException(void);
-		void	IsNotSignedException(void);
-		void	beSigned(Bureaucrat bureaucrat);
+		class GradeTooLowException : public std::exception
+		{
+			public :
+				virtual const char* what() const throw();
+		};
+		class GradeTooHighException : public std::exception
+		{
+			public :
+				virtual const char* what() const throw();
+		};
+		class IsNotSigned: public std::exception
+		{
+			public :
+				virtual const char* what() const throw();
+		};		void	beSigned(Bureaucrat bureaucrat);
 		virtual void	execute(Bureaucrat const & executor);
 };
 

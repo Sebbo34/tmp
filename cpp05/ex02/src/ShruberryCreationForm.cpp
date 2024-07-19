@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShruberryCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:32:39 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 23:06:49 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/19 14:50:02 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ShruberryCreationForm::execute(Bureaucrat const & executor)
 		fichier << "   .....//||||\\...." << std::endl;
 	}
 	else if (!this->isSigned())
-		this->IsNotSignedException();
+		throw AForm::IsNotSigned();
 	else
-		this->GradeTooLowException();
+		throw AForm::GradeTooLowException();
 }

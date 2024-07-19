@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:31:39 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/18 12:37:53 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/19 14:52:02 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 AForm::AForm(std::string name, const int gradeForSign, const int gradeForEx) : name(name), sign(0), gradeForSign(gradeForSign), gradeForEx(gradeForEx)
 {
 	if (gradeForSign > 150 || gradeForEx > 150)
-		this->GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	else if (gradeForSign < 1 || gradeForEx < 1)
-		this->GradeTooHighException();
+		throw AForm::GradeTooHighException();
 	std::cout << "AForm constructor called" << std::endl;
 	return ;
 }
@@ -75,19 +75,24 @@ std::ostream &operator<<(std::ostream &o, AForm const & AForm)
 	return o;
 }
 
-void	AForm::GradeTooHighException(void)
+typedef AForm::GradeTooLowException Low;
+typedef AForm::GradeTooHighException High;
+typedef AForm::IsNotSigned INS;
+
+
+
+const char* High::what() const throw()
 {
-	throw Error("Grade Too High");
+	return "Grade too high";
 }
 
-void	AForm::GradeTooLowException(void)
+const char* Low::what() const throw()
 {
-	throw Error("Grade Too Low");
+	return "Grade too low";
 }
-
-void	AForm::IsNotSignedException(void)
+const char* INS::what() const throw()
 {
-	throw Error("The Form is not signed");
+	return "Form is not signed";
 }
 
 
@@ -96,5 +101,5 @@ void	AForm::beSigned(Bureaucrat bureaucrat)
 	if (bureaucrat.getGrade() <= this->getGradeForSign())
 		this->sign = true;
 	else
-		GradeTooLowException();
+		throw AForm::GradeTooLowException();
 }

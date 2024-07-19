@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:31:39 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 21:01:53 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/19 14:43:53 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 Form::Form(std::string name, const int gradeForSign, const int gradeForEx) : name(name), sign(0), gradeForSign(gradeForSign), gradeForEx(gradeForEx)
 {
 	if (gradeForSign > 150 || gradeForEx > 150)
-		this->GradeTooLowException();
+		throw Form::GradeTooLowException();
 	else if (gradeForSign < 1 || gradeForEx < 1)
-		this->GradeTooHighException();
+		throw Form::GradeTooHighException();
 	std::cout << "Form constructor called" << std::endl;
 	return ;
 }
@@ -75,21 +75,22 @@ std::ostream &operator<<(std::ostream &o, Form const & Form)
 	return o;
 }
 
-void	Form::GradeTooHighException(void)
-{
-	throw Error("Grade Too High");
-}
-
-void	Form::GradeTooLowException(void)
-{
-	throw Error("Grade Too Low");
-}
-
 void	Form::beSigned(Bureaucrat const &bureaucrat)
 {
 	if (bureaucrat.getGrade() <= this->getGradeForSign())
 		this->sign = true;
 	else
-		GradeTooLowException();
+		throw Form::GradeTooLowException();
+}
+typedef Form::GradeTooLowException Low;
+typedef Form::GradeTooHighException High;
+
+const char* High::what() const throw()
+{
+	return "Grade too high";
 }
 
+const char* Low::what() const throw()
+{
+	return "Grade too low";
+}

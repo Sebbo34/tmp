@@ -6,12 +6,12 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:31:45 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/18 12:37:31 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/19 15:03:56 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AFORM_H
-#define AFORM_H
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include "Bureaucrat.hpp"
 #include <iostream>
@@ -34,9 +34,21 @@ class AForm
 		int		getGradeForSign(void) const;
 		int		getGradeForEx(void) const;
 		bool	isSigned(void) const;
-		void	GradeTooHighException(void);
-		void	GradeTooLowException(void);
-		void	IsNotSignedException(void);
+		class GradeTooLowException : public std::exception
+		{
+			public :
+				virtual const char* what() const throw();
+		};
+		class GradeTooHighException : public std::exception
+		{
+			public :
+				virtual const char* what() const throw();
+		};
+		class IsNotSigned: public std::exception
+		{
+			public :
+				virtual const char* what() const throw();
+		};
 		void	beSigned(Bureaucrat bureaucrat);
 		virtual void	execute(Bureaucrat const & executor) = 0;
 };

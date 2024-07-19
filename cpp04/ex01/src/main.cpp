@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 12:05:09 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/16 18:55:49 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/17 15:55:10 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,16 @@ int main(void)
 	Dog dog;
 	dog.setIdea("0", 0);
 	dog.setIdea("1", 1);
+	std::cout << "Dog idea" << std::endl;
 	dog.printIdeas();
 	Dog nDog(dog);
+	std::cout << "nDog idea" << std::endl;
 	nDog.printIdeas();
 	nDog.setIdea("1", 0);
+	std::cout << "nDog idea change" << std::endl;
 	nDog.printIdeas();
+	std::cout << "Dog idea" << std::endl;
 	dog.printIdeas();
-
+	dog = nDog;
+	dog.printIdeas();
 }

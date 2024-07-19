@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:33:08 by sbo               #+#    #+#             */
-/*   Updated: 2024/05/28 15:48:26 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/19 14:56:21 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class ShruberryCreationForm : public AForm
 		ShruberryCreationForm & operator=(ShruberryCreationForm const & form);
 		ShruberryCreationForm (const ShruberryCreationForm & src);
 		void	execute(Bureaucrat const & executor);
-
 };
 
 #endif

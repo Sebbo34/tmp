@@ -6,14 +6,13 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 09:31:15 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 12:30:21 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/19 14:12:38 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_H
-#define BUREAUCRAT_H
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
-#include "error.hpp"
 #include <iostream>
 #include <exception>
 
@@ -33,8 +32,16 @@ class Bureaucrat
 	
 		void	promote();
 		void	demote();
-		void	GradeTooHighException(void); //exception a throw
-		void	GradeTooLowException(void);
+		class GradeTooLowException : public std::exception
+		{
+			public :
+				virtual const char* what() const throw();
+		};
+		class GradeTooHighException : public std::exception
+		{
+			public :
+				virtual const char* what() const throw();
+		};
 };
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & bureaucrat);

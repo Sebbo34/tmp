@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 09:31:15 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 21:21:54 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/19 14:11:24 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_H
-#define BUREAUCRAT_H
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
 #include "AForm.hpp"
-#include "error.hpp"
 #include <iostream>
 #include <exception>
 
@@ -36,8 +35,16 @@ public:
 
 	void		promote();
 	void		demote();
-	void		GradeTooHighException(void);
-	void		GradeTooLowException(void);
+	class GradeTooLowException : public std::exception
+	{
+		public :
+			virtual const char* what() const throw();
+	};
+	class GradeTooHighException : public std::exception
+	{
+		public :
+			virtual const char* what() const throw();
+	};
 	void		signForm(AForm &form);
 	void		executeForm(AForm &form);
 	

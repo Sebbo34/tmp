@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 19:03:14 by sbo               #+#    #+#             */
-/*   Updated: 2024/06/28 19:34:38 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/16 17:36:57 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ template<class T>
 int	easyfind(T container, int number)
 {
 	int occ;
-	auto it = container.begin();
+	typename T::iterator it = container.begin();
 
 	occ = 0;
 	while (it != container.end())

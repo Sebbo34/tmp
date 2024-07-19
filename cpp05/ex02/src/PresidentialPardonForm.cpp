@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 10:32:55 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/18 12:37:40 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/19 14:49:39 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	PresidentialPardonForm::execute(Bureaucrat const & executor)
 	if (this->isSigned() && executor.getGrade() <= this->getGradeForEx())
 		std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 	else if (!this->isSigned())
-		this->IsNotSignedException();
+		throw AForm::IsNotSigned();
 	else
-		this->GradeTooLowException();
+		throw AForm::GradeTooLowException();
 }

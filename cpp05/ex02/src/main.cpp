@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 10:28:02 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/15 21:49:36 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/19 15:01:52 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int main(void)
 		boss.executeForm(SCF);
 		boss.executeForm(RRF);
 
-		PPF.execute(James);
+		SCF.execute(James);
 	}
 	catch(std::exception const& e)
 	{
@@ -56,6 +56,4 @@ int main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-
-	
 }

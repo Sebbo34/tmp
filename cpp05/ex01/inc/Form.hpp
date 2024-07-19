@@ -6,12 +6,12 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:31:45 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/17 21:32:31 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/19 14:12:23 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_H
-#define FORM_H
+#ifndef FORM_HPP
+#define FORM_HPP
 
 #include "Bureaucrat.hpp"
 #include <iostream>
@@ -36,8 +36,16 @@ class Form
 		int getGradeForEx(void) const;
 		bool	isSigned(void) const;
 
-		void	GradeTooHighException(void);
-		void	GradeTooLowException(void);
+		class GradeTooLowException : public std::exception
+		{
+			public :
+				virtual const char* what() const throw();
+		};
+		class GradeTooHighException : public std::exception
+		{
+			public :
+				virtual const char* what() const throw();
+		};
 		void	beSigned(Bureaucrat const &bureaucrat);
 };
 

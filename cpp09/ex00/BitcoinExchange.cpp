@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 21:40:13 by sbo               #+#    #+#             */
-/*   Updated: 2024/07/02 19:32:45 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/17 19:14:48 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ std::map<std::string, float> creat_map(std::string file)
         if (end == file.npos)
             end = file.size();
         if (file[vir + 1] && isdigit(file[vir + 1]))
-		map[file.substr(0, vir)] = atof(file.substr(vir + 1, end).c_str());
+		    map[file.substr(0, vir)] = atof(file.substr(vir + 1, end).c_str());
 		file.erase(0, end + 1);
 
 	}
@@ -34,7 +34,7 @@ std::map<std::string, float> creat_map(std::string file)
     // }
     return (map);
 }
-
+/* 
 int max_days(std::string month)
 {
     if (month == "01" || month == "03" || month == "05" || month == "07" || month == "08" || month == "10" || month == "12")
@@ -92,7 +92,7 @@ int diff_time(std::string start, std::string end)
         nbr_day++;
     }
     return (nbr_day);
-}
+} */
 
 std::string find_closest(std::string date ,std::map<std::string, float> map)
 {
@@ -168,3 +168,9 @@ int main()
     }    
     
 }
+
+// value inf a 100
+// date valide 
+// positive number
+// format date | value
+//

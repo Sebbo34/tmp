@@ -1,7 +1,6 @@
 NAME		:= form
 
 SRCS		:= Bureaucrat.cpp \
-				error.cpp \
 				main.cpp
 OBJS		:= $(SRCS:.cpp=.o)
 

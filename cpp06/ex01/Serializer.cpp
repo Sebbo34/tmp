@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 15:50:56 by seb               #+#    #+#             */
-/*   Updated: 2024/06/27 12:40:19 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/16 13:33:07 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
 
-Serializer::Serializer(/* args */)
+Serializer::Serializer()
 {
 	std::cout << "Serializer constructor called" << std::endl;
 }

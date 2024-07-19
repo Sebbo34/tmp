@@ -6,7 +6,7 @@
 /*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 19:03:17 by sbo               #+#    #+#             */
-/*   Updated: 2024/06/28 19:36:53 by sbo              ###   ########.fr       */
+/*   Updated: 2024/07/16 17:39:41 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 
 int main()
 {
-    std::deque<int> d(5,7);        //Une deque de 5 éléments valant 6
-    std::deque<int>::iterator it;  //Un itérateur sur une deque d'entiers
+    std::deque<int> d(5,7);
+    std::deque<int>::iterator it;
 	int i = 0;
-    //Et on itère sur la deque
     for(it = d.begin(); it!=d.end(); ++it)
     {
 		i++;
-        *it = i;    //On accède à l'élément pointé via l'étoile
+        *it = i;
+        std::cout << *it << std::endl;
     }
 	std::cout << easyfind(d, 4) << std::endl;
     return 0;

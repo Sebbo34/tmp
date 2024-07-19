@@ -5,7 +5,6 @@ SRCS		:= AForm.cpp \
 				PresidentialPardonForm.cpp \
 				RobotomyRequestForm.cpp \
 				ShruberryCreationForm.cpp \
-				error.cpp \
 				main.cpp
 OBJS		:= $(SRCS:.cpp=.o)
 

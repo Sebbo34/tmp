@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sbo <sbo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 12:18:15 by sbo               #+#    #+#             */
-/*   Updated: 2024/06/25 15:20:55 by seb              ###   ########.fr       */
+/*   Updated: 2024/07/16 13:18:05 by sbo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@
 
 class ScalarConverter
 {
-	private:
-		/* data */
 	public:
-		ScalarConverter(/* args */);
+		ScalarConverter();
 		virtual ~ScalarConverter() = 0;
-		// ScalarConverter(const ScalarConverter &src);
-		// ScalarConverter &operator=(ScalarConverter const &conv);
+		ScalarConverter(const ScalarConverter &src);
+		ScalarConverter &operator=(ScalarConverter const &conv);
 		static void			convert(std::string src);
 };
 
